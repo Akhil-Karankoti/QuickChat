@@ -1,0 +1,435 @@
+body {
+  margin: 0;
+  font-size: 12px;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  color: #00000091 !important;
+}
+
+#root>div{
+  height: calc(100vh - 100px);
+  overflow: scroll;
+  width: 98vw;
+  height: 96vh;
+  margin: auto;
+  display: flex;
+  padding: 1.6rem;
+  box-sizing: border-box;
+  border-radius: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.MuiPaper-root {
+  box-shadow:  2px 1px -1px rgb(0 0 0 / 20%), 0px 1px 1px 0px rgb(0 0 0 / 14%), 0px 1px 3px 0px rgb(0 0 0 / 12%) !important;
+}
+.primary-bg {
+  background-color: #dde8fc3d !important;
+}
+
+.secondary-bg {
+  background-color: #dde8fc;
+}
+
+.statsBg{
+  background-color: #98b8f3c1 !important;
+}
+
+.logoCircle{
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+}
+
+.logoPng{
+  width: 60% !important;
+  height: 60% !important;
+}
+
+.logo>h6{
+  padding-left: 1.5rem;
+  font-size: x-large;
+}
+
+.myProfile{
+  background-color: #dde8fc3d !important;
+  border-radius: 1rem !important;
+  padding: 1.5rem;
+}
+
+.d-flex {
+  display: flex;
+}
+
+.profileWrapper {
+  flex-direction: column;
+}
+
+.chatBoxWrapper {
+  flex-direction: column;
+}
+
+.profile {
+  justify-content: center;
+  margin-top: 0.6rem;
+  align-items: center;
+}
+
+
+#root {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+}
+
+.leftPanel {
+  /* min-width: 250px; */
+  max-width: 250px;
+  /* padding: 1rem; */
+  /* margin: 1rem; */
+  overflow: scroll;
+}
+
+.rightPanel {
+  /* width: 100%; */
+  max-width: 889px;
+  /* max-height: 780px; */
+  flex-grow: 1;
+  margin: 0px 2rem;
+  border-radius: 1.2rem !important;
+  background-color: #dde8fc3d !important;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+}
+
+.logo > h5 {
+  font-weight: 800;
+}
+
+.accordian {
+  font-size: 1rem !important;
+  font-weight: 600 !important;
+}
+
+.accordian:before{
+  height: 0 !important;
+}
+
+.accordianCount {
+  width: 20px !important;
+  height: 20px !important;
+  font-size: small !important;
+  color: black !important;
+  margin-left: 0.5rem;
+  background-color: #bdbdbd52 !important;
+}
+
+.accordianLogo {
+  color: black;
+  width: 1.2rem !important;
+  height: 1.2rem !important;
+}
+
+.pointer{
+  cursor: pointer;
+}
+
+/* .accordianDetails>div:not(:last-child){
+  margin-bottom: 0.5rem;
+} */
+
+.accordianDetails {
+  padding: 0px !important;
+}
+.accordianDetails>div{
+  padding: 0.5rem 1rem;
+}
+
+.activeUser {
+  background-color: #dde8fc3d;
+  border-radius: 1rem;
+}
+
+.activeUser p {
+  font-weight: 500;
+}
+
+
+.p-08{
+  padding: 0.8rem;
+}
+
+.flex-direction-column-reverse {
+  flex-direction: column-reverse;
+}
+
+.flex-direction-column {
+  flex-direction: column;
+}
+
+.flex-grow-1{
+  flex-grow: 1;
+}
+
+.button {
+  cursor: pointer;
+  background-color: blue !important;
+  color: white !important;
+  text-transform: none !important;
+}
+
+.row-reverse{
+  flex-direction: row-reverse;
+}
+
+.css-1elwnq4-MuiPaper-root-MuiAccordion-root:before {
+  height: 0px;
+}
+
+.overflow-scroll {
+  overflow: scroll;
+}
+
+.justify-content-center{
+  justify-content: center;
+}
+
+.align-items-center {
+  align-items: center;
+}
+
+.p-1{
+  padding: 1rem;
+}
+
+.p-2{
+  padding: 2rem;
+}
+
+.leftPanel>div{
+  margin-bottom: 0.8rem;
+}
+
+.leftPanel>div:last-child{
+  margin-bottom: 0rem;
+}
+
+.flex-wrap{
+  flex-wrap: wrap;
+}
+
+.justify-content-space-between {
+  justify-content: space-between;
+}
+.justify-content-end{
+  justify-content: end;
+}
+
+.chatText {
+  padding: 0.8rem;
+  border-radius: 8px !important;
+}
+
+.chatImage {
+  margin:0px 0.6rem;
+}
+
+.textDivs > div:not(:last-child) {
+  margin-bottom: 2rem;
+}
+
+.selfTexts {
+  background-color: rgb(48, 47, 47) !important;
+  color: rgba(255, 255, 255) !important;
+}
+
+.selfTexts ~ span {
+  text-align: right;
+}
+
+.linkIcon {
+  transform: rotate(45deg);
+}
+
+.linkIcon2 {
+  transform: rotate(-45deg);
+}
+
+.inputOuterWrapper {
+  padding: 0.8rem 0.8rem 1.2rem;
+}
+
+.inputOuterWrapper>div{
+  border-radius: 10px;
+}
+
+.inputWrapper {
+  margin: 0px 0.7rem !important;
+  padding: 0.3rem 0.5rem !important;
+}
+
+.inputWrapper>div::before {
+  border-bottom: 0px !important;
+}
+
+.inputWrapper>div::after {
+  border-bottom: 0px !important;
+}
+
+.sendButton {
+  background-color: blue !important;
+  color: white !important;
+}
+
+#my-input{
+  padding: 5px;
+}
+
+.emailsDiv {
+  border-radius: 1rem !important;
+  padding: 1.5rem;
+}
+
+.emailsDiv>div:not(:last-child) {
+  margin-bottom: 0.5rem;
+}
+
+.emailsDiv>div svg {
+  margin-right: 10px;
+}
+
+.stats{
+  border-radius: 1rem !important;
+  padding: 1.5rem;
+}
+
+.currentWeek {
+  margin: 0.8rem 0px;
+}
+
+.legend {
+  margin-top: 1rem;
+  font-size: 0.6rem;
+}
+
+.onboard {
+  border-radius: 1rem !important;
+  padding: 1.3rem;
+}
+
+.onboard>span{
+  margin: 0.5rem 0px;
+  font-size: 0.9rem;
+}
+
+.statActivitiesDiv > div {
+  padding: 10px;
+  flex-grow: 1;
+  width:48%;
+  box-sizing: border-box;
+  align-items: center;
+  border-radius: 10px;
+}
+
+.statActivitiesDiv > div:first-child, .statActivitiesDiv > div:nth-child(2) {
+  margin-bottom: 0.5rem;
+}
+
+.statActivitiesDiv > div:first-child, .statActivitiesDiv > div:nth-child(3) {
+  margin-right: 0.5rem;
+}
+
+.statActivitiesDiv > div > div:first-child{
+  border-radius: 50%;
+  padding: 5px;
+}
+
+.statActivitiesDiv > div > div:first-child > svg{
+  width: 0.8em;
+  height: 0.8em;
+}
+
+.statActivitiesDiv > div > div:last-child{
+  padding-left: 0.6rem;
+}
+
+.statActivitiesDiv > div > div > span:first-child {
+  font-weight: bold;
+  font-size: 0.9rem;
+}
+.statActivitiesDiv > div > div > span:last-child {
+  color: #0000009c;
+  font-size: 0.6rem;
+}
+
+.burgerIcon {
+  position: absolute;
+  right: 35px;
+  padding: 10px;
+  border-radius: 10px;
+  background-color: #dde8fc !important;
+  z-index: 10;
+}
+
+.backIcon {
+  position: absolute;
+  left: 35px;
+  padding: 10px;
+  border-radius: 10px;
+  background-color: #dde8fc !important;
+  z-index: 10;
+}
+
+/* @media screen and (max-width: 1023px) {
+
+} */
+
+@media screen and (max-width: 1023px) {
+  #root>div {
+    height: calc(100vh - 100px);
+    overflow: scroll;
+    width: 98vw;
+    height: 96vh;
+    margin: auto;
+    display: flex;
+    padding: 1rem;
+    box-sizing: border-box;
+    border-radius: 0.5rem;
+    flex-wrap: wrap;
+  }
+
+  .rightPanel {
+    margin: 0px 0px 0px 1rem;
+  }
+
+  .detailsPanelOpened {
+    padding: 10px;
+    margin: 10px;
+    left: 460px;
+  }
+}
+
+@media screen and (max-width: 425px) {
+  #root>div>div {
+   flex-grow: 1;
+  }
+
+  .leftPanel{
+    max-width: 100%;
+  }
+
+  .rightPanel {
+    margin: 0px;
+  }
+
+  .detailsPanelOpened {
+    padding: 10px;
+    margin: 10px;
+    left: 460px;
+  }
+}
