@@ -55,7 +55,6 @@ function Chat() {
             anchorOrigin={{ vertical: "bottom", horizontal: "right" }}
             variant="dot"
           >
-            
           </StyledBadge> */}
           <Avatar
             alt="Akhil"

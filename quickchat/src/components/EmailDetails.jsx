@@ -1,11 +1,13 @@
 import { Paper, Box, Avatar, Button } from "@mui/material";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import React, { useCallback } from "react";
 import MailOutlineIcon from "@mui/icons-material/MailOutline";
 import AccountCircleOutlinedIcon from "@mui/icons-material/AccountCircleOutlined";
 import Inventory2OutlinedIcon from "@mui/icons-material/Inventory2Outlined";
+import { userChangeIsArchived } from "../store/reducers/users";
 
 function EmailDetails() {
+  const dispatch = useDispatch();
   const selectedUser = useSelector((store) =>
     store.userReducer.find((items) => items.isSelected === true) || {}
   );
@@ -16,6 +18,10 @@ function EmailDetails() {
       return `${nameArray[0][0]}${nameArray[1][0]}`.toUpperCase();
     }
   }, [selectedUser]);
+
+  const onButtonClick = () => {
+    dispatch(userChangeIsArchived(selectedUser.id))
+  }
 
   return (
     <Paper className="d-flex flex-direction-column emailsDiv primary-bg">
@@ -40,8 +46,8 @@ function EmailDetails() {
         <span>{selectedUser.name}</span>
       </Box>
       <Box className="d-flex justify-content-center">
-        <Button endIcon={<Inventory2OutlinedIcon />} variant="outlined">
-          Archive
+        <Button endIcon={<Inventory2OutlinedIcon />} variant="outlined" onClick={onButtonClick}>
+          {selectedUser.isArchived ? "UnArchive" : "Archive"}
         </Button>
       </Box>
     </Paper>

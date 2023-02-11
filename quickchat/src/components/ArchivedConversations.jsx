@@ -9,19 +9,30 @@ import {
 } from "@mui/material";
 import { useDispatch, useSelector } from "react-redux";
 import { userSelected } from "../store/reducers/users";
+import { useEffect, useState } from "react";
 
 export default function ArchivedConversations() {
   const archivedConversationState = useSelector((store) =>
     store.userReducer.filter((items) => items.isArchived === true)
   );
   const dispatch = useDispatch();
+  const [openState, setOpenState] = useState(false);
 
   const handleUserClick = (id) => {
     dispatch(userSelected(id));
   };
 
+  useEffect(() => {
+    for (const user of archivedConversationState) {
+      if (user.isSelected) {
+        setOpenState(true);
+        break;
+      }
+    }
+  }, [archivedConversationState]);
+
   return (
-    <Accordion sx={{ boxShadow: "none" }} className="accordian">
+    <Accordion sx={{ boxShadow: "none" }} className="accordian" expanded={openState}>
       <AccordionSummary
         expandIcon={<ExpandMoreIcon className="accordianLogo" />}
         sx={{
@@ -57,7 +68,7 @@ export default function ArchivedConversations() {
                 src={user.profileUrl}
                 sx={{ width: 45, height: 45 }}
               />
-              <Typography sx={{paddingLeft: "1rem"}}>{user.name}</Typography>
+              <Typography sx={{ paddingLeft: "1rem" }}>{user.name}</Typography>
             </Box>
           );
         })}

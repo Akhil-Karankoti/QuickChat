@@ -172,11 +172,19 @@ const users = createSlice({
             user.isSelected = user.id === action.payload ? true: false;
             return user
         })
+    },
+    userChangeIsArchived: (state, action) => {
+        for(const user of state) {
+            if(user.id === action.payload) {
+                user.isArchived = !user.isArchived
+                break;
+            }
+        }
     }
   }
 })
 
 // Action creators are generated for each case reducer function
-export const { userSelected } = users.actions
+export const { userSelected, userChangeIsArchived } = users.actions
 
 export default users.reducer

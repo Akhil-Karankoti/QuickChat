@@ -1,20 +1,21 @@
-import { Paper, FormControl, Input, Button } from "@mui/material";
+import { Paper, Input, Button } from "@mui/material";
 import { Box } from "@mui/system";
 import AttachFileIcon from "@mui/icons-material/AttachFile";
-import InsertEmoticonIcon from "@mui/icons-material/InsertEmoticon";
 import SendIcon from "@mui/icons-material/Send";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect, useRef, useState } from "react";
+import EmojiPicker from "./EmojiPicker";
 import { newMessage } from "../store/reducers/messages";
 import Chat from "./Chat";
 
 export default function RightPanel() {
   const dispatch = useDispatch();
-  const [messageState, setMessageState] = useState();
+  const [messageState, setMessageState] = useState("");
   const timerRef = useRef();
 
-  const { id: selectedUserChartId } = useSelector((store) =>
-    store.userReducer.find((items) => items.isSelected === true) || {}
+  const { id: selectedUserChartId } = useSelector(
+    (store) =>
+      store.userReducer.find((items) => items.isSelected === true) || {}
   );
 
   const inputHandler = (e) => {
@@ -68,10 +69,9 @@ export default function RightPanel() {
               onChange={inputHandler}
               value={messageState}
             />
-            <InsertEmoticonIcon
-              sx={{
-                color: "orange",
-              }}
+            <EmojiPicker
+              messageState={messageState}
+              setMessageState={setMessageState}
             />
           </Paper>
           <Button
