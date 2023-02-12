@@ -141,7 +141,7 @@ function Stats() {
           </Box>
           <Box className="d-flex">
             {activityData.map((data, index) => (
-              <Box className="d-flex flex-direction-column justify-content-end align-items-center flex-grow-1">
+              <Box className="d-flex flex-direction-column justify-content-end align-items-center flex-grow-1" key={index}>
                 <Box
                   sx={{
                     width,

@@ -10,11 +10,12 @@ import {
 import { useDispatch, useSelector } from "react-redux";
 import { userSelected } from "../store/reducers/users";
 import { useEffect, useState } from "react";
+import React from "react";
 
-export default function ArchivedConversations() {
-  const archivedConversationState = useSelector((store) =>
-    store.userReducer.filter((items) => items.isArchived === true)
-  );
+function ArchivedConversations() {
+  const archivedConversationState = useSelector((store) => {
+    return store.userReducer;
+  });
   const dispatch = useDispatch();
   const [openState, setOpenState] = useState(false);
 
@@ -22,9 +23,13 @@ export default function ArchivedConversations() {
     dispatch(userSelected(id));
   };
 
+  const closeAccordian = () => {
+    setOpenState(!openState);
+  };
+
   useEffect(() => {
     for (const user of archivedConversationState) {
-      if (user.isSelected) {
+      if (user.isSelected && user.isArchived) {
         setOpenState(true);
         break;
       }
@@ -32,7 +37,12 @@ export default function ArchivedConversations() {
   }, [archivedConversationState]);
 
   return (
-    <Accordion sx={{ boxShadow: "none" }} className="accordian" expanded={openState}>
+    <Accordion
+      sx={{ boxShadow: "none" }}
+      className="accordian"
+      expanded={openState}
+      onClick={closeAccordian}
+    >
       <AccordionSummary
         expandIcon={<ExpandMoreIcon className="accordianLogo" />}
         sx={{
@@ -48,31 +58,39 @@ export default function ArchivedConversations() {
               className: "logoPng",
             }}
             children={
-              archivedConversationState.filter((user) => !user.isActive).length
+              archivedConversationState.filter(
+                (user) => !user.isActive && user.isArchived
+              ).length
             }
           />
         </Box>
       </AccordionSummary>
       <AccordionDetails className="accordianDetails">
-        {archivedConversationState.map((user) => {
-          return (
-            <Box
-              key={user.id}
-              className={`d-flex align-items-center pointer ${
-                user.isSelected && "activeUser"
-              }`}
-              onClick={() => handleUserClick(user.id)}
-            >
-              <Avatar
-                alt="Akhil"
-                src={user.profileUrl}
-                sx={{ width: 45, height: 45 }}
-              />
-              <Typography sx={{ paddingLeft: "1rem" }}>{user.name}</Typography>
-            </Box>
-          );
-        })}
+        {archivedConversationState
+          .filter((user) => user.isArchived)
+          .map((user) => {
+            return (
+              <Box
+                key={user.id}
+                className={`d-flex align-items-center pointer ${
+                  user.isSelected && "activeUser"
+                }`}
+                onClick={() => handleUserClick(user.id)}
+              >
+                <Avatar
+                  alt="Akhil"
+                  src={user.profileUrl}
+                  sx={{ width: 45, height: 45 }}
+                />
+                <Typography sx={{ paddingLeft: "1rem" }}>
+                  {user.name}
+                </Typography>
+              </Box>
+            );
+          })}
       </AccordionDetails>
     </Accordion>
   );
 }
+
+export default React.memo(ArchivedConversations);

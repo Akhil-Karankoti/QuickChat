@@ -55,16 +55,18 @@ const messages = createSlice({
         newMessage: (state, action) => {
             if (state[action.payload.id]) {
                 state[action.payload.id].push({
-                    text: action.payload.message,
+                    text: action.payload.message || "",
                     sentBy: action.payload.sentBy || 1,
-                    time: action.payload.time
+                    time: action.payload.time,
+                    imageUrl: action.payload.imageUrl
                 })
             }
             else {
                 state[action.payload.id] = [{
                     text: action.payload.message,
                     sentBy: action.payload.sentBy || 1,
-                    time: action.payload.time
+                    time: action.payload.time,
+                    imageUrl: action.payload.imageUrl
                 }]
             }
         }

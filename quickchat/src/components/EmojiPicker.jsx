@@ -29,6 +29,7 @@ function CustomEmojiPicker(props) {
           color: "orange",
           cursor: "pointer",
         }}
+        className="icon"
         onClick={toggleEmojiIconClick}
       />
       <Popover

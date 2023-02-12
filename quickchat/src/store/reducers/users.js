@@ -1,4 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
+import image1 from "../../images/image1.jpeg";
 import image2 from "../../images/image2.jpeg";
 import image3 from "../../images/image9.jpeg";
 import image4 from "../../images/image4.webp";
@@ -8,6 +9,13 @@ import image8 from "../../images/image8.jpeg";
 
 
 const usersInitialState = [
+    {
+        id: 1,
+        name: "Bill Bradford",
+        profileUrl: image1,
+        owner: true,
+        isActive: true
+    },
     {
         id: 2,
         name: "Henry Boyd",
@@ -24,7 +32,7 @@ const usersInitialState = [
         email: "marthcurtis@gmail.com",
         isSelected: false,
         isArchived: false,
-        isActive: true
+        isActive: false
     },
     {
         id: 4,
@@ -180,11 +188,14 @@ const users = createSlice({
                 break;
             }
         }
+    },
+    toggleUserActiveState: (state) => {
+        state[0].isActive = !state[0].isActive;
     }
   }
 })
 
 // Action creators are generated for each case reducer function
-export const { userSelected, userChangeIsArchived } = users.actions
+export const { userSelected, userChangeIsArchived, toggleUserActiveState } = users.actions
 
 export default users.reducer

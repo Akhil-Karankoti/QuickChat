@@ -1,19 +1,19 @@
 import { Paper, Input, Button } from "@mui/material";
 import { Box } from "@mui/system";
-import AttachFileIcon from "@mui/icons-material/AttachFile";
 import SendIcon from "@mui/icons-material/Send";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect, useRef, useState } from "react";
 import EmojiPicker from "./EmojiPicker";
 import { newMessage } from "../store/reducers/messages";
 import Chat from "./Chat";
+import Attachments from "./Attachments";
 
 export default function RightPanel() {
   const dispatch = useDispatch();
   const [messageState, setMessageState] = useState("");
   const timerRef = useRef();
 
-  const { id: selectedUserChartId } = useSelector(
+  const { id: selectedUserChartId, isActive } = useSelector(
     (store) =>
       store.userReducer.find((items) => items.isSelected === true) || {}
   );
@@ -35,16 +35,20 @@ export default function RightPanel() {
       setMessageState("");
 
       timerRef.current = setTimeout(() => {
-        dispatch(
-          newMessage({
-            id: selectedUserChartId,
-            message:
-              "Ooops! sorry, currently I'm not in a position to reply. Will reply asap.",
-            sentBy: selectedUserChartId,
-            time: "Just now",
-          })
-        );
-      }, 2000);
+        if(isActive) {
+          dispatch(
+            newMessage({
+              id: selectedUserChartId,
+              message:
+                "Ooops! sorry, currently I'm not in a position to reply. Will reply asap.",
+              sentBy: selectedUserChartId,
+              time: "Just now",
+            })
+          );
+        } else {
+          alert("Fake reply is not created as user is offline.");
+        }
+      }, 1000);
     }
   };
 
@@ -59,7 +63,7 @@ export default function RightPanel() {
       <Chat />
       <Box className="inputOuterWrapper">
         <Paper className="d-flex p-08 align-items-center">
-          <AttachFileIcon className="linkIcon" />
+          <Attachments selectedUserChartId={selectedUserChartId} isActive={isActive}/>
           <Paper className="inputWrapper d-flex align-items-center flex-grow-1">
             <Input
               id="my-input"

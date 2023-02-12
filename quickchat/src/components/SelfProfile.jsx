@@ -3,16 +3,27 @@ import { Box } from "@mui/system";
 import SettingsOutlinedIcon from "@mui/icons-material/SettingsOutlined";
 import profileImg from "../images/image1.jpeg";
 import ToggleOnRoundedIcon from "@mui/icons-material/ToggleOnRounded";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { toggleUserActiveState } from "../store/reducers/users";
 
 export default function Profile() {
   const [anchorEl, setAnchorEl] = useState(null);
+  const dispatch = useDispatch();
+  const userState = useSelector((store) => store.userReducer[0]);
+
   const open = Boolean(anchorEl);
+
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
   };
+
   const handleClose = () => {
     setAnchorEl(null);
+  };
+
+  const toggleActiveHandler = () => {
+    dispatch(toggleUserActiveState());
   };
 
   return (
@@ -53,12 +64,11 @@ export default function Profile() {
         Lead UI/UX Designer
       </Typography>
       <Box className="d-flex profile">
-        <ToggleOnRoundedIcon
-          sx={{
-            color: "blue",
-          }}
-        />
-        <span>Active</span>
+        <label className="switch icon">
+          <input type="checkbox" defaultChecked={userState.isActive} />
+          <span className="slider round" onClick={toggleActiveHandler}></span>
+        </label>
+        <span>{userState.isActive ? "Active" : "Inactive"}</span>
       </Box>
 
       <Menu

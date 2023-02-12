@@ -46,7 +46,7 @@ function App() {
     if (windowDimensions > 425) {
       dispatch(userSelected(2));
     }
-  }, [windowDimensions])
+  }, [windowDimensions, dispatch])
 
   useEffect(() => {
     setConvoTab(false);
